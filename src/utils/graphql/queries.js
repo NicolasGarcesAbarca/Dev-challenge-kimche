@@ -3,6 +3,7 @@ import { gql } from '@apollo/client';
 const ALL_NATIONS = gql`
     query{
         countries{
+        code
         name
         emoji
         continent{
@@ -15,4 +16,16 @@ const ALL_NATIONS = gql`
   }
 `;
 
-export { ALL_NATIONS };
+const FIND_COUNTRY = gql`
+  query findCountryByCode($code: ID!){
+       
+    country(code: $code){
+        native
+        phone
+        capital
+        currency
+      }
+    }
+`;
+
+export { ALL_NATIONS, FIND_COUNTRY };

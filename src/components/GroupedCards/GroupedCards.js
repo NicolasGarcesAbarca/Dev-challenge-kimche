@@ -16,8 +16,8 @@ function GroupedCards({ name, data }) {
   return (
     <CardContainer>
       <h2>{name}</h2>
-      {data.map((country) => (
-        <Card key={country.name} data={country} />
+      {data.length && data.map((country) => (
+        <Card key={country.name} wea={country} />
       ))}
     </CardContainer>
   );
