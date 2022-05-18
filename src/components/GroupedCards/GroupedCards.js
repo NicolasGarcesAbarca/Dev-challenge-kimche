@@ -3,23 +3,21 @@ import styled from 'styled-components';
 import { Card } from './Card';
 
 const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  & > h2 {
-    margin-bottom: 0.5rem;
-  }
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  gap:1rem;
 `;
 
 function GroupedCards({ name, data }) {
   return (
-    <CardContainer>
+    <>
       <h2>{name}</h2>
-      {data.length && data.map((country) => (
-        <Card key={country.name} wea={country} />
-      ))}
-    </CardContainer>
+      <CardContainer>
+        {data.length && data.map((country) => (
+          <Card key={country.name} countryData={country} />
+        ))}
+      </CardContainer>
+    </>
   );
 }
 
