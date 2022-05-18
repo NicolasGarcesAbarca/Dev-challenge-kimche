@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   * {
-    color: palevioletred;
+    color: #4f4f4f;
   }
 `;
 
