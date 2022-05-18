@@ -1,5 +1,7 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
+import { FIND_COUNTRY } from '../../../utils/graphql/queries';
 
 const CardContainer = styled.div`
   display: flex;
@@ -14,17 +16,24 @@ const CardContainer = styled.div`
   }
 `;
 
-function Card({ data }) {
-  console.log(data);
+function Card({ wea }) {
+  const configQuery = { variables: { code: wea.code } };
+  const { loading, error, data } = useQuery(FIND_COUNTRY, configQuery);
+
+  if (error) {
+    return <p>Error</p>
+  }
   return (
     <CardContainer>
       <div>
-        <p>{data.emoji}</p>
-        <h3>{data.name}</h3>
+        <p>{wea.emoji}</p>
+        <h3>{wea.name}</h3>
       </div>
-      <div>
-        here more info
-      </div>
+      {loading ? <p>loading</p> : (
+        <div>
+          <p>{data.country.capital}</p>
+        </div>
+      )}
     </CardContainer>
   )
 }
