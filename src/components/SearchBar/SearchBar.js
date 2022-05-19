@@ -97,7 +97,7 @@ function SearchBar() {
         loading ? <p>Loading...</p>
           : (
             <div>
-              <div>
+              <article>
                 <Form>
                   <p htmlFor="name">
                     Escribe el nombre de un país
@@ -109,7 +109,7 @@ function SearchBar() {
                   <Button type="button" onClick={() => (!isContinent && toggle())} isActive={isContinent}>continent</Button>
                   <Button type="button" onClick={() => (isContinent && toggle())} isActive={!isContinent}>language</Button>
                 </ButtonContainer>
-              </div>
+              </article>
               <ResultPanel data={groupedData} />
             </div>
           )
