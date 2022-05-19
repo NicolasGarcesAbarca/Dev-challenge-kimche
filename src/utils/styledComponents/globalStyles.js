@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
 * {
-   color: black;
+   color: #363636;
    font-family: "Montserrat", sans-serif;
  }
 `;
