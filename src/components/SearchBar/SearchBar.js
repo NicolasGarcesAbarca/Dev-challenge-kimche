@@ -77,6 +77,8 @@ function SearchBar() {
         const groupedCountries = groupByLanguage(filteredCountries);
         setGroupedData(groupedCountries);
       }
+    } else {
+      setGroupedData([]);
     }
   }, [inputName, isContinent, data])
 
