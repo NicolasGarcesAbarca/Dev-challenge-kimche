@@ -106,8 +106,8 @@ function SearchBar() {
                 </Form>
                 <ButtonContainer>
                   <strong>Group by:</strong>
-                  <Button type="button" onClick={() => toggle()} isActive={isContinent}>continent</Button>
-                  <Button type="button" onClick={() => toggle()} isActive={!isContinent}>language</Button>
+                  <Button type="button" onClick={() => (!isContinent && toggle())} isActive={isContinent}>continent</Button>
+                  <Button type="button" onClick={() => (isContinent && toggle())} isActive={!isContinent}>language</Button>
                 </ButtonContainer>
               </div>
               <ResultPanel data={groupedData} />
