@@ -5,7 +5,19 @@ import { FIND_COUNTRY } from '../../../utils/graphql/queries';
 
 const DataList = styled.ul`
     list-style: none;
-    
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:2rem;
+    margin:0;
+    p{
+      margin:0;
+    }
+    li:not(:last-child) > p {
+      margin:0 0 0.7rem 0;
+    }
+
+        
 `;
 
 const CardContainer = styled.div`
@@ -14,20 +26,22 @@ const CardContainer = styled.div`
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   background-color: #EFEBE3;
-  & > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap:0.6rem;
-    background-color: #F1A208;
-    border-radius: 10px 10px 0 0;
-  }
+  
   strong{
     text-transform:capitalize
   }
 `;
 
+const TitleContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:0.6rem;
+    padding: 0.5rem;
+    background-color: #F1A208;
+    border-radius: 10px 10px 0 0;
+`;
 function Card({ countryData }) {
   const configQuery = { variables: { code: countryData.code } };
   const { loading, error, data } = useQuery(FIND_COUNTRY, configQuery);
@@ -37,10 +51,10 @@ function Card({ countryData }) {
   }
   return (
     <CardContainer>
-      <div>
+      <TitleContainer>
         <p>{countryData.emoji}</p>
         <h3>{countryData.name}</h3>
-      </div>
+      </TitleContainer>
       {loading ? <p>loading</p> : (
         <DataList>
           {Object.keys(data.country).map((key) => {
