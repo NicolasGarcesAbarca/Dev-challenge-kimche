@@ -85,6 +85,9 @@ function SearchBar() {
   const handleInput = (e) => {
     setInputName(e.target.value);
   }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
 
   if (error) {
     return <p>Error</p>
@@ -98,7 +101,7 @@ function SearchBar() {
           : (
             <div>
               <article>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <p htmlFor="name">
                     Escribe el nombre de un país
                   </p>
